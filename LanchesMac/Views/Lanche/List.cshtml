@@ -1,0 +1,23 @@
+﻿@model LanchesMac.ViewModels.LancheListViewModel;
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="text-center">
+    <h2>@Model.CategoriaAtual</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var lanche in Model.Lanches)
+        {
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <img src="@lanche.ImagemUrl" class="img-fluid" />
+                <h4>@lanche.Nome</h4>
+                <p>@lanche.DescricaoCurta</p>
+                <p>Preço: @lanche.Preco.ToString("c")</p>
+            </div>
+        }
+    </div>
+</div>
