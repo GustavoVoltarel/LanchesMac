@@ -1,0 +1,8 @@
+﻿@model LanchesMac.Models.Lanche;
+
+<div class="col-sm-4 col-md-4 col-lg-4">
+                <img src="@Model.ImagemUrl" class="img-fluid" />
+                <h4>@Model.Nome</h4>
+                <p>@Model.DescricaoCurta</p>
+                <p>Preço: @Model.Preco.ToString("c")</p>
+            </div>
