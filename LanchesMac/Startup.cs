@@ -27,6 +27,7 @@ public class Startup
         //Scoped pois caso 2 clientes façam um request ao mesmo tempo, terão carrinhos diferentes, pois são requests diferentes(atualizado a cada request)
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddTransient<IPedidoRepository, PedidoRepository>();
 
         services.AddMemoryCache();
         services.AddSession();

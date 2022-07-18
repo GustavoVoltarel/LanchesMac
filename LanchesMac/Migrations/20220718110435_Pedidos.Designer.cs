@@ -4,6 +4,7 @@ using LanchesMac.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LanchesMac.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220718110435_Pedidos")]
+    partial class Pedidos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,10 +199,10 @@ namespace LanchesMac.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PedidoDetalheId"), 1L, 1);
 
-                    b.Property<int>("LancheId")
+                    b.Property<int?>("LancheId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PedidoId")
+                    b.Property<int?>("PedidoId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Preco")
@@ -242,15 +244,11 @@ namespace LanchesMac.Migrations
                 {
                     b.HasOne("LanchesMac.Models.Lanche", "Lanche")
                         .WithMany()
-                        .HasForeignKey("LancheId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LancheId");
 
                     b.HasOne("LanchesMac.Models.Pedido", "Pedido")
                         .WithMany("PedidoItens")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PedidoId");
 
                     b.Navigation("Lanche");
 
