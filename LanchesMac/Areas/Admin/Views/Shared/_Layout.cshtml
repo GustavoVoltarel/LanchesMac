@@ -17,6 +17,16 @@
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminCategorias" asp-action="Index">Categorias</a>
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminPedidos" asp-action="Index">Pedidos</a>
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminRelatorioVendas" asp-action="Index">Relatório de Vendas</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle bg-dark border-0" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gráficos de Vendas
+                        </button>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                            <li><a class="nav-link text-light" asp-area="Admin" asp-controller="AdminGrafico" asp-action="Index">Vendas Anuais</a></li>
+                            <li><a class="nav-link text-light" asp-area="Admin" asp-controller="AdminGrafico" asp-action="VendaMensal" asp-route-dias="30">Vendas Mensais</a></li>
+                            <li><a class="nav-link text-light" asp-area="Admin" asp-controller="AdminGrafico" asp-action="VendaSemanal" asp-route-dias="7">Vendas Semanais</a></li>
+                        </ul>
+                    </div>
                     <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminImagens" asp-action="Index">Gerenciar Imagens</a>
                 </div>
             </div>
@@ -27,11 +37,9 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            <p><a target="_blank" href="http://www.macoratti.net">&copy; 2021 - Macoratti.net</a></p>
-        </div>
-    </footer>
+
+    <partial name="_Footer" />
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
